@@ -1,0 +1,3 @@
+FLASK_APP=pybo
+FLASK_DEBUG=true
+FLASK_ENV=development
