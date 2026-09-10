@@ -1,10 +1,13 @@
-from flask import Blueprint
+from flask import Blueprint, render_template
+from pybo.models import Question
 
-bp = Blueprint('main', __name__, url_prefix='/main')
+bp = Blueprint('main', __name__, url_prefix='/')
 
 @bp.route('/')
-def hello_world():
-    return 'Hello Main!'
+def index():
+    question_list = Question.query.order_by(Question.create_date.desc()).all()
+
+    return render_template('question/question_list.html', question_list=question_list)
 
 @bp.route('/hello')
 def hello():
