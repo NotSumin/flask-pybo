@@ -15,7 +15,6 @@ def create_app():
     # initialize ORM
     db.init_app(app)
     migrate.init_app(app, db)
-
     from . import models
 
     # @app.route('/')
@@ -26,8 +25,10 @@ def create_app():
     # def hello():
     #     return 'hello page입니다!'
 
-    # blueprint
-    from .views import main_views
+    # blueprints
+    from .views import main_views, question_views, answer_views
     app.register_blueprint(main_views.bp)
+    app.register_blueprint(question_views.bp)
+    app.register_blueprint(answer_views.bp)
 
     return app
